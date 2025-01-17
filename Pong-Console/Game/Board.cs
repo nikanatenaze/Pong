@@ -27,12 +27,12 @@ namespace Pong_Console.Game
             for(int i = 0; i <= Width; i++)
             {
                 Console.SetCursorPosition(i, 0);
-                Console.WriteLine("▀");
+                Console.WriteLine("▄");
             }
             for(int i = 0; i <= Width; i++)
             {
                 Console.SetCursorPosition(i, Height);
-                Console.WriteLine("▄");
+                Console.WriteLine("▀");
             }
             for (int i = 0; i <= Height; i++)
             {
@@ -44,6 +44,15 @@ namespace Pong_Console.Game
                 Console.SetCursorPosition(Width, i);
                 Console.WriteLine("█");
             }
+            // borders
+            Console.SetCursorPosition(0, 0);
+            Console.WriteLine("▄");
+            Console.SetCursorPosition(Width, 0);
+            Console.WriteLine("▄");
+            Console.SetCursorPosition(0, Height);
+            Console.WriteLine("▀");
+            Console.SetCursorPosition(Width, Height);
+            Console.WriteLine("▀");
         }
     }
 }

@@ -60,10 +60,12 @@ namespace Pong_Console.Game
 
         public void Write()
         {
+            Console.ForegroundColor = ConsoleColor.Green;
             for (int i = 0; i < Length; i++) { 
                 Console.SetCursorPosition(X, i + Y);
-                Console.WriteLine("|");
+                Console.WriteLine("│");
             }
+            Console.ForegroundColor = ConsoleColor.White;
         }
     }
 }

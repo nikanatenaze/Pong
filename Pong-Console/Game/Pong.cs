@@ -13,6 +13,7 @@ namespace Pong_Console.Game
         public Board Board { get; set; }
         public Paddle LeftPaddle { get; set; }
         public Paddle RightPaddle { get; set; }
+        public Ball Ball { get; set; }
         ConsoleKey Key { get; set; }
         ConsoleKeyInfo ConsoleKeyInfo { get; set; }
 
@@ -23,6 +24,7 @@ namespace Pong_Console.Game
             Board = new Board(Width, Height);
             LeftPaddle = new Paddle(2, Height);
             RightPaddle = new Paddle(Width - 2, Height);
+            Ball = new Ball(Height, Width, (LeftPaddle, RightPaddle));
         }
 
         public void Input()
@@ -42,6 +44,7 @@ namespace Pong_Console.Game
                 Board.Write();
                 LeftPaddle.Write();
                 RightPaddle.Write();
+                Ball.Move();
                 Input();
                 if (Key == ConsoleKey.W)
                 {
