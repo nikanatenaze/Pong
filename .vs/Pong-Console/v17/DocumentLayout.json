@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\nikanatenaze\\Desktop\\GitHubProjects\\Pong\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{5E99AC83-D0D2-46DF-A2C2-A7F17CC6B510}|Pong-Console\\Pong-Console.csproj|c:\\users\\nikanatenaze\\desktop\\githubprojects\\pong\\pong-console\\menu\\gamemenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E99AC83-D0D2-46DF-A2C2-A7F17CC6B510}|Pong-Console\\Pong-Console.csproj|solutionrelative:pong-console\\menu\\gamemenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{5E99AC83-D0D2-46DF-A2C2-A7F17CC6B510}|Pong-Console\\Pong-Console.csproj|c:\\users\\nikanatenaze\\desktop\\githubprojects\\pong\\pong-console\\game\\pong.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5E99AC83-D0D2-46DF-A2C2-A7F17CC6B510}|Pong-Console\\Pong-Console.csproj|solutionrelative:pong-console\\game\\pong.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5E99AC83-D0D2-46DF-A2C2-A7F17CC6B510}|Pong-Console\\Pong-Console.csproj|c:\\users\\nikanatenaze\\desktop\\githubprojects\\pong\\pong-console\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5E99AC83-D0D2-46DF-A2C2-A7F17CC6B510}|Pong-Console\\Pong-Console.csproj|solutionrelative:pong-console\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5E99AC83-D0D2-46DF-A2C2-A7F17CC6B510}|Pong-Console\\Pong-Console.csproj|c:\\users\\nikanatenaze\\desktop\\githubprojects\\pong\\pong-console\\game\\paddle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -17,10 +25,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{5E99AC83-D0D2-46DF-A2C2-A7F17CC6B510}|Pong-Console\\Pong-Console.csproj|c:\\users\\nikanatenaze\\desktop\\githubprojects\\pong\\pong-console\\game\\ball.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5E99AC83-D0D2-46DF-A2C2-A7F17CC6B510}|Pong-Console\\Pong-Console.csproj|solutionrelative:pong-console\\game\\ball.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5E99AC83-D0D2-46DF-A2C2-A7F17CC6B510}|Pong-Console\\Pong-Console.csproj|c:\\users\\nikanatenaze\\desktop\\githubprojects\\pong\\pong-console\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5E99AC83-D0D2-46DF-A2C2-A7F17CC6B510}|Pong-Console\\Pong-Console.csproj|solutionrelative:pong-console\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -43,19 +47,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "GameMenu.cs",
+              "DocumentMoniker": "C:\\Users\\nikanatenaze\\Desktop\\GitHubProjects\\Pong\\Pong-Console\\Menu\\GameMenu.cs",
+              "RelativeDocumentMoniker": "Pong-Console\\Menu\\GameMenu.cs",
+              "ToolTip": "C:\\Users\\nikanatenaze\\Desktop\\GitHubProjects\\Pong\\Pong-Console\\Menu\\GameMenu.cs",
+              "RelativeToolTip": "Pong-Console\\Menu\\GameMenu.cs",
+              "ViewState": "AQIAAGcAAAAAAAAAAAAAAHoAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-18T19:37:36.744Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Pong.cs",
               "DocumentMoniker": "C:\\Users\\nikanatenaze\\Desktop\\GitHubProjects\\Pong\\Pong-Console\\Game\\Pong.cs",
               "RelativeDocumentMoniker": "Pong-Console\\Game\\Pong.cs",
               "ToolTip": "C:\\Users\\nikanatenaze\\Desktop\\GitHubProjects\\Pong\\Pong-Console\\Game\\Pong.cs",
               "RelativeToolTip": "Pong-Console\\Game\\Pong.cs",
-              "ViewState": "AQIAADEAAAAAAAAAAAAUwDoAAAAUAAAA",
+              "ViewState": "AQIAADEAAAAAAAAAAAAywCMAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-18T19:04:09.683Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Board.cs",
               "DocumentMoniker": "C:\\Users\\nikanatenaze\\Desktop\\GitHubProjects\\Pong\\Pong-Console\\Game\\Board.cs",
               "RelativeDocumentMoniker": "Pong-Console\\Game\\Board.cs",
@@ -63,24 +80,24 @@
               "RelativeToolTip": "Pong-Console\\Game\\Board.cs",
               "ViewState": "AQIAAAMAAAAAAAAAAAAkwBMAAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-18T16:25:39.757Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-18T16:25:39.757Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\nikanatenaze\\Desktop\\GitHubProjects\\Pong\\Pong-Console\\Program.cs",
               "RelativeDocumentMoniker": "Pong-Console\\Program.cs",
               "ToolTip": "C:\\Users\\nikanatenaze\\Desktop\\GitHubProjects\\Pong\\Pong-Console\\Program.cs",
               "RelativeToolTip": "Pong-Console\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-18T16:25:36.868Z"
+              "WhenOpened": "2025-01-18T16:25:36.868Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Paddle.cs",
               "DocumentMoniker": "C:\\Users\\nikanatenaze\\Desktop\\GitHubProjects\\Pong\\Pong-Console\\Game\\Paddle.cs",
               "RelativeDocumentMoniker": "Pong-Console\\Game\\Paddle.cs",
@@ -88,12 +105,11 @@
               "RelativeToolTip": "Pong-Console\\Game\\Paddle.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-18T16:25:34.347Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-18T16:25:34.347Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Ball.cs",
               "DocumentMoniker": "C:\\Users\\nikanatenaze\\Desktop\\GitHubProjects\\Pong\\Pong-Console\\Game\\Ball.cs",
               "RelativeDocumentMoniker": "Pong-Console\\Game\\Ball.cs",
@@ -101,8 +117,7 @@
               "RelativeToolTip": "Pong-Console\\Game\\Ball.cs",
               "ViewState": "AQIAAGUAAAAAAAAAAAAkwJMAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-18T11:13:39.157Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-18T11:13:39.157Z"
             }
           ]
         }

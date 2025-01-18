@@ -1,3 +1,4 @@
 ﻿using Pong_Console.Game;
-Pong pong = new Pong();
-pong.Run();
+using Pong_Console.Menu;
+GameMenu gameMenu = new GameMenu(new List<string>() { "Start", "Setting", "Exit" });
+gameMenu.Execute();
