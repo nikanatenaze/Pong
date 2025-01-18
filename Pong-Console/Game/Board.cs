@@ -10,11 +10,14 @@ namespace Pong_Console.Game
     {
         public int Width { get; set; }
         public int Height { get; set; }
-
-        public Board(int width, int height)
+        public int FirstScore { get; set; }
+        public int SecondScore { get; set; }
+        public Board(int width, int height, (int, int) Scores)
         {
             Width = width;
             Height = height;
+            FirstScore = Scores.Item1;
+            SecondScore = Scores.Item2;
         }
 
         public Board() {
@@ -53,6 +56,11 @@ namespace Pong_Console.Game
             Console.WriteLine("▀");
             Console.SetCursorPosition(Width, Height);
             Console.WriteLine("▀");
+            // Type score
+            Console.SetCursorPosition(Width / 2 - 6, Height + 2);
+            Console.WriteLine($"Player one: {FirstScore}");
+            Console.SetCursorPosition(Width / 2 - 6, Height + 3);
+            Console.WriteLine($"Player two: {SecondScore}");
         }
     }
 }

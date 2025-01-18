@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Pong_Console.Game
+﻿namespace Pong_Console.Game
 {
     internal class Ball
     {
@@ -13,7 +7,7 @@ namespace Pong_Console.Game
         public int BoardHeight { get; set; }
         public int BoardWidth { get; set; }
         public (Paddle, Paddle) Paddles { get; set; }
-        public (int,int) Direction { get; set; }
+        public (int, int) Direction { get; set; }
 
         public Ball(int BoardHeight, int BoardWidth, (Paddle, Paddle) paddles)
         {
@@ -29,7 +23,7 @@ namespace Pong_Console.Game
         {
             Random rnd = new Random();
             int random = rnd.Next(1, 3);
-            if(random == 1)
+            if (random == 1)
             {
                 var i = rnd.Next(-3, 0);
                 Direction = (3, 0);
@@ -52,10 +46,14 @@ namespace Pong_Console.Game
             var RightPaddleRage = (RightPaddle.Y - 1, RightPaddle.Y + RightPaddle.Length);
             if (LeftPaddle.X + 1 == X)
             {
-                if(Y !> LeftPaddleRage.Item1 && Y !< LeftPaddleRage.Item2)
+                if (Y! > LeftPaddleRage.Item1 && Y! < LeftPaddleRage.Item2)
                 {
                     NewXDirection = rnd.Next(1, 4);
                     NewYDirection = rnd.Next(-2, 3);
+                    while (NewXDirection == -3)
+                    {
+                        NewXDirection = rnd.Next(-4, -1);
+                    }
                     Direction = (NewXDirection, NewYDirection);
                 }
             }
@@ -65,7 +63,7 @@ namespace Pong_Console.Game
                 {
                     NewXDirection = rnd.Next(-4, -1);
                     NewYDirection = rnd.Next(-2, 3);
-                    while(NewXDirection == -3)
+                    while (NewXDirection == -3)
                     {
                         NewXDirection = rnd.Next(-4, -1);
                     }
@@ -86,11 +84,11 @@ namespace Pong_Console.Game
         {
             var LeftPaddle = Paddles.Item1;
             var RightPaddle = Paddles.Item2;
-            if(Direction.Item1 > 1 && X + Direction.Item1 >= RightPaddle.X)
+            if (Direction.Item1 > 1 && X + Direction.Item1 >= RightPaddle.X)
             {
                 X++;
             }
-            else if(Direction.Item1 < -1 && X - Direction.Item1 <= LeftPaddle.X)
+            else if (Direction.Item1 < -1 && X - Direction.Item1 <= LeftPaddle.X)
             {
                 X--;
             }
@@ -115,17 +113,39 @@ namespace Pong_Console.Game
             }
         }
 
-        public void Move()
+
+        public int Score()
+        {
+            if(X == 1)
+            {
+                return 1;
+            }
+            if(X == BoardWidth - 1)
+            {
+                return 2;
+            }
+            return 0;
+        }
+        public int Move()
         {
             Console.WriteLine(Direction);
             Console.CursorVisible = false;
             Console.SetCursorPosition(X, Y);
             Console.WriteLine(" ");
-            SafePaddle();
-            SafeBoarder();
-            OnPaddle();
-            Write();
+            int result = Score();
+            if (result == 0)
+            {
+                SafePaddle();
+                SafeBoarder();
+                OnPaddle();
+                Write();
+            }  
+            if(result == 1 || result == 2)
+            {
+                return result;
+            }
             Thread.Sleep(50);
+            return 0;
         }
 
         public void Write()

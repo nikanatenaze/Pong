@@ -10,6 +10,8 @@ namespace Pong_Console.Game
     {
         public int Width { get; set; }
         public int Height { get; set; }
+        public int PlayerOneScore { get; set; }
+        public int PlayerTwoScore { get; set; }
         public Board Board { get; set; }
         public Paddle LeftPaddle { get; set; }
         public Paddle RightPaddle { get; set; }
@@ -21,10 +23,12 @@ namespace Pong_Console.Game
         {
             Height = 21;
             Width = 70;
-            Board = new Board(Width, Height);
+            Board = new Board(Width, Height, (PlayerOneScore, PlayerTwoScore));
             LeftPaddle = new Paddle(2, Height);
             RightPaddle = new Paddle(Width - 2, Height);
             Ball = new Ball(Height, Width, (LeftPaddle, RightPaddle));
+            PlayerOneScore = 0;
+            PlayerTwoScore = 0;
         }
 
         public void Input()
@@ -36,25 +40,57 @@ namespace Pong_Console.Game
             }
         }
 
+        public bool CheckGame()
+        {
+            if(PlayerOneScore == 3 || PlayerTwoScore == 3)
+                return true;
+            return false;
+        }
+
+        public void CreateNewRound()
+        {
+            Ball = new Ball(Height, Width, (LeftPaddle, RightPaddle));
+            Board = new Board(Width, Height, (PlayerOneScore, PlayerTwoScore));
+        }
+
         public void Run()
         {
             Console.CursorVisible = false;
-            while (true)
+            while (!CheckGame())
             {
                 Board.Write();
                 LeftPaddle.Write();
                 RightPaddle.Write();
-                Ball.Move();
-                Input();
-                if (Key == ConsoleKey.W)
+                int BallResult = Ball.Move();
+                if (BallResult == 0)
                 {
-                    LeftPaddle.Up();
-                    RightPaddle.Up();
+                    Input();
+                    if (Key == ConsoleKey.W)
+                    {
+                        LeftPaddle.Up();
+                    }
+                    if (Key == ConsoleKey.UpArrow)
+                    {
+                        RightPaddle.Up();
+                    }
+                    if (Key == ConsoleKey.DownArrow)
+                    {
+                        RightPaddle.Down();
+                    }
+                    if (Key == ConsoleKey.S)
+                    {
+                        LeftPaddle.Down();
+                    }
                 }
-                if (Key == ConsoleKey.S)
+                else if (BallResult == 1)
                 {
-                    LeftPaddle.Down();
-                    RightPaddle.Down();
+                    PlayerOneScore++;
+                    CreateNewRound();
+                }
+                else if (BallResult == 2)
+                {
+                    PlayerTwoScore++;
+                    CreateNewRound();
                 }
                 Key = ConsoleKey.A;
                 Thread.Sleep(50);
