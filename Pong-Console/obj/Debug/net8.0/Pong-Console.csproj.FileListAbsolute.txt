@@ -12,3 +12,18 @@ C:\Users\nikanatenaze\Desktop\STEP\Back End\Pong-Console\Pong-Console\obj\Debug\
 C:\Users\nikanatenaze\Desktop\STEP\Back End\Pong-Console\Pong-Console\obj\Debug\net8.0\Pong-Console.pdb
 C:\Users\nikanatenaze\Desktop\STEP\Back End\Pong-Console\Pong-Console\obj\Debug\net8.0\Pong-Console.genruntimeconfig.cache
 C:\Users\nikanatenaze\Desktop\STEP\Back End\Pong-Console\Pong-Console\obj\Debug\net8.0\ref\Pong-Console.dll
+C:\Users\nikanatenaze\Desktop\GitHubProjects\Pong\Pong-Console\bin\Debug\net8.0\Pong-Console.exe
+C:\Users\nikanatenaze\Desktop\GitHubProjects\Pong\Pong-Console\bin\Debug\net8.0\Pong-Console.deps.json
+C:\Users\nikanatenaze\Desktop\GitHubProjects\Pong\Pong-Console\bin\Debug\net8.0\Pong-Console.runtimeconfig.json
+C:\Users\nikanatenaze\Desktop\GitHubProjects\Pong\Pong-Console\bin\Debug\net8.0\Pong-Console.dll
+C:\Users\nikanatenaze\Desktop\GitHubProjects\Pong\Pong-Console\bin\Debug\net8.0\Pong-Console.pdb
+C:\Users\nikanatenaze\Desktop\GitHubProjects\Pong\Pong-Console\obj\Debug\net8.0\Pong-Console.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nikanatenaze\Desktop\GitHubProjects\Pong\Pong-Console\obj\Debug\net8.0\Pong-Console.AssemblyInfoInputs.cache
+C:\Users\nikanatenaze\Desktop\GitHubProjects\Pong\Pong-Console\obj\Debug\net8.0\Pong-Console.AssemblyInfo.cs
+C:\Users\nikanatenaze\Desktop\GitHubProjects\Pong\Pong-Console\obj\Debug\net8.0\Pong-Console.csproj.CoreCompileInputs.cache
+C:\Users\nikanatenaze\Desktop\GitHubProjects\Pong\Pong-Console\obj\Debug\net8.0\Pong-Console.sourcelink.json
+C:\Users\nikanatenaze\Desktop\GitHubProjects\Pong\Pong-Console\obj\Debug\net8.0\Pong-Console.dll
+C:\Users\nikanatenaze\Desktop\GitHubProjects\Pong\Pong-Console\obj\Debug\net8.0\refint\Pong-Console.dll
+C:\Users\nikanatenaze\Desktop\GitHubProjects\Pong\Pong-Console\obj\Debug\net8.0\Pong-Console.pdb
+C:\Users\nikanatenaze\Desktop\GitHubProjects\Pong\Pong-Console\obj\Debug\net8.0\Pong-Console.genruntimeconfig.cache
+C:\Users\nikanatenaze\Desktop\GitHubProjects\Pong\Pong-Console\obj\Debug\net8.0\ref\Pong-Console.dll

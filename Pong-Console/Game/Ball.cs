@@ -31,11 +31,13 @@ namespace Pong_Console.Game
             int random = rnd.Next(1, 3);
             if(random == 1)
             {
-                Direction = (-1, 0);
+                var i = rnd.Next(-3, 0);
+                Direction = (i, 0);
             }
             else if (random == 2)
             {
-                Direction = (1, 0);
+                var i = rnd.Next(1, 4);
+                Direction = (i, 0);
             }
         }
 
@@ -52,18 +54,18 @@ namespace Pong_Console.Game
             {
                 if(Y !> LeftPaddleRage.Item1 && Y !< LeftPaddleRage.Item2)
                 {
-                    NewXDirection = rnd.Next(1, 3);
-                    NewYDirection = rnd.Next(-1, 2);
-                    Direction = (1, NewYDirection);
+                    NewXDirection = rnd.Next(1, 4);
+                    NewYDirection = rnd.Next(-2, 3);
+                    Direction = (NewXDirection, NewYDirection);
                 }
             }
             if (RightPaddle.X - 1 == X)
             {
                 if (Y! > RightPaddleRage.Item1 && Y! < RightPaddleRage.Item2)
                 {
-                    NewXDirection = rnd.Next(-3, -1);
-                    NewYDirection = rnd.Next(-1, 2);
-                    Direction = (-1, NewYDirection);
+                    NewXDirection = rnd.Next(-4, -1);
+                    NewYDirection = rnd.Next(-2, 3);
+                    Direction = (NewXDirection, NewYDirection);
                 }
             }
             if (Y == 1)
@@ -76,13 +78,45 @@ namespace Pong_Console.Game
             }
         }
 
+        public void PaddleSafe()
+        {
+            var LeftPaddle = Paddles.Item1;
+            var RightPaddle = Paddles.Item2;
+            if (Direction.Item1 > -1 && Direction.Item1 - X >= LeftPaddle.X)
+            {
+                Console.WriteLine(321);
+                X = X - 1;
+            }
+            else if (Direction.Item1 > 1 && Direction.Item1 + X >= RightPaddle.X)
+            {
+                Console.WriteLine(123);
+                X = X + 1;
+            }
+            else
+            {
+                X = X + Direction.Item1;
+            }
+        }
+
         public void Move()
         {
+            Console.WriteLine(Direction);
             Console.CursorVisible = false;
             Console.SetCursorPosition(X, Y);
             Console.WriteLine(" ");
-            X = X + Direction.Item1;
-            Y = Y + Direction.Item2;
+            PaddleSafe();
+            if(Direction.Item2 < -1 && Direction.Item2 - Y <= 0)
+            {
+                Y = Y + 1;
+            }
+            else if (Direction.Item2 > 1 && Direction.Item2 - Y <= BoardHeight)
+            {
+                Y = Y - 1;
+            }
+            else
+            {
+                Y = Y + Direction.Item2;
+            }
             OnPaddle();
             Write();
             Thread.Sleep(50);

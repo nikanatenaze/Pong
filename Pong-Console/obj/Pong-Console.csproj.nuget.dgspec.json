@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nikanatenaze\\Desktop\\STEP\\Back End\\Pong-Console\\Pong-Console\\Pong-Console.csproj": {}
+    "C:\\Users\\nikanatenaze\\Desktop\\GitHubProjects\\Pong\\Pong-Console\\Pong-Console.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nikanatenaze\\Desktop\\STEP\\Back End\\Pong-Console\\Pong-Console\\Pong-Console.csproj": {
+    "C:\\Users\\nikanatenaze\\Desktop\\GitHubProjects\\Pong\\Pong-Console\\Pong-Console.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nikanatenaze\\Desktop\\STEP\\Back End\\Pong-Console\\Pong-Console\\Pong-Console.csproj",
+        "projectUniqueName": "C:\\Users\\nikanatenaze\\Desktop\\GitHubProjects\\Pong\\Pong-Console\\Pong-Console.csproj",
         "projectName": "Pong-Console",
-        "projectPath": "C:\\Users\\nikanatenaze\\Desktop\\STEP\\Back End\\Pong-Console\\Pong-Console\\Pong-Console.csproj",
+        "projectPath": "C:\\Users\\nikanatenaze\\Desktop\\GitHubProjects\\Pong\\Pong-Console\\Pong-Console.csproj",
         "packagesPath": "C:\\Users\\nikanatenaze\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nikanatenaze\\Desktop\\STEP\\Back End\\Pong-Console\\Pong-Console\\obj\\",
+        "outputPath": "C:\\Users\\nikanatenaze\\Desktop\\GitHubProjects\\Pong\\Pong-Console\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\nikanatenaze\\AppData\\Roaming\\NuGet\\NuGet.Config",

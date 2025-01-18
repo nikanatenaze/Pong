@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Pong_Console
-build_property.ProjectDir = C:\Users\nikanatenaze\Desktop\STEP\Back End\Pong-Console\Pong-Console\
+build_property.ProjectDir = C:\Users\nikanatenaze\Desktop\GitHubProjects\Pong\Pong-Console\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
