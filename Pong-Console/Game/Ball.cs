@@ -32,12 +32,12 @@ namespace Pong_Console.Game
             if(random == 1)
             {
                 var i = rnd.Next(-3, 0);
-                Direction = (i, 0);
+                Direction = (3, 0);
             }
             else if (random == 2)
             {
                 var i = rnd.Next(1, 4);
-                Direction = (i, 0);
+                Direction = (3, 0);
             }
         }
 
@@ -65,6 +65,10 @@ namespace Pong_Console.Game
                 {
                     NewXDirection = rnd.Next(-4, -1);
                     NewYDirection = rnd.Next(-2, 3);
+                    while(NewXDirection == -3)
+                    {
+                        NewXDirection = rnd.Next(-4, -1);
+                    }
                     Direction = (NewXDirection, NewYDirection);
                 }
             }
@@ -78,23 +82,36 @@ namespace Pong_Console.Game
             }
         }
 
-        public void PaddleSafe()
+        public void SafePaddle()
         {
             var LeftPaddle = Paddles.Item1;
             var RightPaddle = Paddles.Item2;
-            if (Direction.Item1 > -1 && Direction.Item1 - X >= LeftPaddle.X)
+            if(Direction.Item1 > 1 && X + Direction.Item1 >= RightPaddle.X)
             {
-                Console.WriteLine(321);
-                X = X - 1;
+                X++;
             }
-            else if (Direction.Item1 > 1 && Direction.Item1 + X >= RightPaddle.X)
+            else if(Direction.Item1 < -1 && X - Direction.Item1 <= LeftPaddle.X)
             {
-                Console.WriteLine(123);
-                X = X + 1;
+                X--;
             }
             else
             {
                 X = X + Direction.Item1;
+            }
+        }
+        public void SafeBoarder()
+        {
+            if (Direction.Item2 < -1 && Direction.Item2 - Y <= 0)
+            {
+                Y++;
+            }
+            else if (Direction.Item2 > 1 && Direction.Item2 - Y <= BoardHeight)
+            {
+                Y--;
+            }
+            else
+            {
+                Y = Y + Direction.Item2;
             }
         }
 
@@ -104,19 +121,8 @@ namespace Pong_Console.Game
             Console.CursorVisible = false;
             Console.SetCursorPosition(X, Y);
             Console.WriteLine(" ");
-            PaddleSafe();
-            if(Direction.Item2 < -1 && Direction.Item2 - Y <= 0)
-            {
-                Y = Y + 1;
-            }
-            else if (Direction.Item2 > 1 && Direction.Item2 - Y <= BoardHeight)
-            {
-                Y = Y - 1;
-            }
-            else
-            {
-                Y = Y + Direction.Item2;
-            }
+            SafePaddle();
+            SafeBoarder();
             OnPaddle();
             Write();
             Thread.Sleep(50);
