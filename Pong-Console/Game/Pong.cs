@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pong_Console.Menu;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -95,6 +96,7 @@ namespace Pong_Console.Game
                 Key = ConsoleKey.A;
                 Thread.Sleep(50);
                 Board.Write();
+                
             }
         }
     }

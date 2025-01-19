@@ -1,9 +1,11 @@
-﻿namespace Pong_Console.Menu
+﻿using System.Collections.Generic;
+
+namespace Pong_Console.Menu
 {
     internal class GameMenu
     {
         public List<string> Values { get; set; }
-        public List<(Func<object> func, int)> Methods { get; set; }
+        public List<Action> Methods { get; set; }
         public List<((int, int), string)> ValuesPos { get; set; }
         public int Selected { get; set; }
         public int PrevSelected { get; set; }
@@ -13,13 +15,13 @@
         public int ConsoleWidth { get; set; } = Console.WindowWidth;
         public int ConsoleHeight { get; set; } = Console.WindowHeight;
 
-        public GameMenu(IEnumerable<string> values, IEnumerable<(Func<object> func, int)> Methods)
+        public GameMenu(IEnumerable<string> values, IEnumerable<Action> actions)
         {
             Selected = 0;
             HeightLine = 5;
             this.Values = values.ToList();
             this.ValuesPos = new List<((int, int), string)>();
-            this.Methods = Methods.ToList(); 
+            this.Methods = actions.ToList();
         }
 
 
@@ -96,19 +98,32 @@
         public void Execute()
         {
             Console.CursorVisible = false;
-            Background c = new Background();
-            c.DisableFullSize();
-            c.DisableResize();
             FillValuesPos();
             while (true)
             {
-                if(Select() != " ")
+                object result = Select();
+                if (result == " ")
                 {
-                    var method = Methods.FirstOrDefault(x => x.Item2 == Selected);
-                    if(method != null)
+                    Write();
+                }
+                if (result is int)
+                {
+                    Action meth = null;
+                    foreach (var i in Methods)
                     {
-                        method.func.Invoke();
+                        object a = Methods.IndexOf(i);
+                        if (a.Equals(result))
+                        {
+                            meth = i;
+                            break;
+                        }
                     }
+                    if (meth != null)
+                    {
+                        Console.Clear();
+                        meth.Invoke();
+                    }
+
                 }
                 Write();
                 Thread.Sleep(50);
