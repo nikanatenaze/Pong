@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Pong_Console.Menu
+﻿namespace Pong_Console.Menu
 {
     internal class GameMenu
     {
         public List<string> Values { get; set; }
-        public (Func<object> func, int) Methods { get; set; }
+        public List<(Func<object> func, int)> Methods { get; set; }
         public List<((int, int), string)> ValuesPos { get; set; }
         public int Selected { get; set; }
         public int PrevSelected { get; set; }
@@ -19,21 +13,22 @@ namespace Pong_Console.Menu
         public int ConsoleWidth { get; set; } = Console.WindowWidth;
         public int ConsoleHeight { get; set; } = Console.WindowHeight;
 
-        public GameMenu(IEnumerable<string> values)
+        public GameMenu(IEnumerable<string> values, IEnumerable<(Func<object> func, int)> Methods)
         {
             Selected = 0;
             HeightLine = 5;
             this.Values = values.ToList();
             this.ValuesPos = new List<((int, int), string)>();
+            this.Methods = Methods.ToList(); 
         }
 
 
-        public void Select()
+        public object Select()
         {
             Input();
             if (Key == ConsoleKey.Enter)
             {
-
+                return Selected;
             }
             if (Key == ConsoleKey.W || Key == ConsoleKey.UpArrow)
             {
@@ -52,6 +47,7 @@ namespace Pong_Console.Menu
                 }
             }
             Key = ConsoleKey.ExSel;
+            return string.Empty;
         }
 
         public void Input()
@@ -63,68 +59,58 @@ namespace Pong_Console.Menu
             }
         }
 
-        public void FillValuesPos()
+        public void Write()
         {
-
-            (int, int) NextPosition = (ConsoleWidth / 2, HeightLine);
-            foreach (var i in Values)
-            {
-                ValuesPos.Add(((NextPosition.Item1, NextPosition.Item2), i));
-                NextPosition = (NextPosition.Item1, NextPosition.Item2 + 1);
-            }
-        }
-
-        public void Write(((int, int), string) value, bool selected = false)
-        {
-            if (selected)
-            {
-                Console.BackgroundColor = ConsoleColor.White;
-                Console.ForegroundColor = ConsoleColor.Black;
-                Console.SetCursorPosition(value.Item1.Item1, value.Item1.Item2);
-                Console.WriteLine($" * {value.Item2} * ");
-                Console.BackgroundColor = ConsoleColor.Black;
-                Console.ForegroundColor = ConsoleColor.White;
-            }
-            else
-            {
-                Console.SetCursorPosition(value.Item1.Item1, value.Item1.Item2);
-                Console.WriteLine(value.Item2);
-            }
-        }
-
-        public void WriteAll()
-        {
+            string threeSpaces = new string(' ', 3);
             for (int i = 0; i < ValuesPos.Count; i++)
             {
-                if(i == Selected)
+                var s = ValuesPos[i];
+                if (i != Selected)
                 {
-                    Console.BackgroundColor = ConsoleColor.White;
-                    Console.ForegroundColor = ConsoleColor.Black;
-                    Console.SetCursorPosition(ValuesPos[i].Item1.Item1, ValuesPos[i].Item1.Item2);
-                    Console.WriteLine($" * {ValuesPos[i].Item2} * ");
-                    Console.BackgroundColor = ConsoleColor.Black;
-                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.SetCursorPosition(s.Item1.Item1, s.Item1.Item2);
+                    Console.WriteLine($"{threeSpaces}{s.Item2}{threeSpaces}");
                 }
                 else
                 {
-                    Console.SetCursorPosition(ValuesPos[i].Item1.Item1, ValuesPos[i].Item1.Item2);
-                    Console.WriteLine(ValuesPos[i].Item2);
+                    Console.ForegroundColor = ConsoleColor.Black;
+                    Console.BackgroundColor = ConsoleColor.White;
+                    Console.SetCursorPosition(s.Item1.Item1, s.Item1.Item2);
+                    Console.WriteLine($" * {s.Item2} * ");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.BackgroundColor = ConsoleColor.Black;
                 }
+            }
+        }
+
+        public void FillValuesPos()
+        {
+            int line = HeightLine;
+            for (int i = 0; i < Values.Count; i++)
+            {
+
+                ValuesPos.Add(((ConsoleWidth / 2 - Values[i].Length / 2, line), Values[i]));
+                line++;
             }
         }
 
         public void Execute()
         {
             Console.CursorVisible = false;
+            Background c = new Background();
+            c.DisableFullSize();
+            c.DisableResize();
             FillValuesPos();
             while (true)
             {
-                while (true)
+                if(Select() != " ")
                 {
-                    Select();
-                    WriteAll();
-                    
+                    var method = Methods.FirstOrDefault(x => x.Item2 == Selected);
+                    if(method != null)
+                    {
+                        method.func.Invoke();
+                    }
                 }
+                Write();
                 Thread.Sleep(50);
             }
         }
