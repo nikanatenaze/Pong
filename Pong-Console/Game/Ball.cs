@@ -128,7 +128,6 @@
         }
         public int Move()
         {
-            Console.WriteLine(Direction);
             Console.CursorVisible = false;
             Console.SetCursorPosition(X, Y);
             Console.WriteLine(" ");

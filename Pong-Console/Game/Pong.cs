@@ -24,12 +24,12 @@ namespace Pong_Console.Game
         {
             Height = 21;
             Width = 70;
-            Board = new Board(Width, Height, (PlayerOneScore, PlayerTwoScore));
+            PlayerOneScore = 0;
+            PlayerTwoScore = 0;
             LeftPaddle = new Paddle(2, Height);
             RightPaddle = new Paddle(Width - 2, Height);
             Ball = new Ball(Height, Width, (LeftPaddle, RightPaddle));
-            PlayerOneScore = 0;
-            PlayerTwoScore = 0;
+            Board = new Board(Width, Height, (PlayerOneScore, PlayerTwoScore));
         }
 
         public void Input()
@@ -48,15 +48,23 @@ namespace Pong_Console.Game
             return false;
         }
 
-        public void CreateNewRound()
+        public void CreateNewRound(bool createAll = false)
         {
             Ball = new Ball(Height, Width, (LeftPaddle, RightPaddle));
             Board = new Board(Width, Height, (PlayerOneScore, PlayerTwoScore));
+            if(createAll)
+            {
+                LeftPaddle = new Paddle(2, Height);
+                RightPaddle = new Paddle(Width - 2, Height);
+                PlayerOneScore = 0;
+                PlayerTwoScore = 0;
+            }
         }
 
         public void Run()
         {
             Console.CursorVisible = false;
+            CreateNewRound(true);
             while (!CheckGame())
             {
                 Board.Write();

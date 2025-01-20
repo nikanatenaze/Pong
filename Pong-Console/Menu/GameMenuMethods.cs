@@ -11,7 +11,6 @@ namespace Pong_Console.Menu
     {
         public static void Start()
         {
-            Console.Clear();
             Pong pong = new Pong();
             pong.Run();
         }

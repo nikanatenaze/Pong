@@ -8,7 +8,6 @@ namespace Pong_Console.Menu
         public List<Action> Methods { get; set; }
         public List<((int, int), string)> ValuesPos { get; set; }
         public int Selected { get; set; }
-        public int PrevSelected { get; set; }
         public int HeightLine { get; set; }
         public ConsoleKey Key { get; set; }
         public ConsoleKeyInfo KeyInfo { get; set; }
@@ -27,6 +26,7 @@ namespace Pong_Console.Menu
 
         public object Select()
         {
+
             Input();
             if (Key == ConsoleKey.Enter)
             {
@@ -36,7 +36,6 @@ namespace Pong_Console.Menu
             {
                 if (Selected - 1 > -1)
                 {
-                    PrevSelected = Selected;
                     Selected--;
                 }
             }
@@ -44,11 +43,11 @@ namespace Pong_Console.Menu
             {
                 if (Selected + 1 < ValuesPos.Count)
                 {
-                    PrevSelected = Selected;
                     Selected++;
                 }
             }
-            Key = ConsoleKey.ExSel;
+            Key = ConsoleKey.A;
+            KeyInfo = new ConsoleKeyInfo();
             return string.Empty;
         }
 
@@ -89,7 +88,6 @@ namespace Pong_Console.Menu
             int line = HeightLine;
             for (int i = 0; i < Values.Count; i++)
             {
-
                 ValuesPos.Add(((ConsoleWidth / 2 - Values[i].Length / 2, line), Values[i]));
                 line++;
             }
@@ -121,9 +119,10 @@ namespace Pong_Console.Menu
                     if (meth != null)
                     {
                         Console.Clear();
+                        Key = ConsoleKey.ExSel;
                         meth.Invoke();
+                        Console.Clear();
                     }
-
                 }
                 Write();
                 Thread.Sleep(50);
