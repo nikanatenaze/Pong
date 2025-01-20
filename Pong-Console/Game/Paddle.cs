@@ -21,7 +21,7 @@ namespace Pong_Console.Game
             this.BoardHeight = BoardHeight;
         }
 
-        public bool Check(bool up = false)
+        private bool Check(bool up = false)
         {
             if (up && Y - 1 == 0) { return false; }
             if (!up)

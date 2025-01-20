@@ -4,15 +4,15 @@ namespace Pong_Console.Menu
 {
     internal class GameMenu
     {
-        public List<string> Values { get; set; }
-        public List<Action> Methods { get; set; }
-        public List<((int, int), string)> ValuesPos { get; set; }
-        public int Selected { get; set; }
-        public int HeightLine { get; set; }
-        public ConsoleKey Key { get; set; }
-        public ConsoleKeyInfo KeyInfo { get; set; }
-        public int ConsoleWidth { get; set; } = Console.WindowWidth;
-        public int ConsoleHeight { get; set; } = Console.WindowHeight;
+        private List<string> Values { get; set; }
+        private List<Action> Methods { get; set; }
+        private List<((int, int), string)> ValuesPos { get; set; }
+        private int Selected { get; set; }
+        private int HeightLine { get; set; }
+        private ConsoleKey Key { get; set; }
+        private ConsoleKeyInfo KeyInfo { get; set; }
+        private int ConsoleWidth { get; set; } = Console.WindowWidth;
+        private int ConsoleHeight { get; set; } = Console.WindowHeight;
 
         public GameMenu(IEnumerable<string> values, IEnumerable<Action> actions)
         {
@@ -24,7 +24,7 @@ namespace Pong_Console.Menu
         }
 
 
-        public object Select()
+        private object Select()
         {
 
             Input();
@@ -51,7 +51,7 @@ namespace Pong_Console.Menu
             return string.Empty;
         }
 
-        public void Input()
+        private void Input()
         {
             if (Console.KeyAvailable)
             {
@@ -60,7 +60,7 @@ namespace Pong_Console.Menu
             }
         }
 
-        public void Write()
+        private void Write()
         {
             string threeSpaces = new string(' ', 3);
             for (int i = 0; i < ValuesPos.Count; i++)
@@ -83,7 +83,7 @@ namespace Pong_Console.Menu
             }
         }
 
-        public void FillValuesPos()
+        private void FillValuesPos()
         {
             int line = HeightLine;
             for (int i = 0; i < Values.Count; i++)

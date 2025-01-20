@@ -12,16 +12,16 @@ namespace Pong_Console.Game
         public int Height { get; set; }
         public int FirstScore { get; set; }
         public int SecondScore { get; set; }
-        public Board(int width, int height, (int, int) Scores)
+        public Board(int width, int height, (int X, int Y) Scores)
         {
             Width = width;
             Height = height;
-            FirstScore = Scores.Item1;
-            SecondScore = Scores.Item2;
+            FirstScore = Scores.X;
+            SecondScore = Scores.Y;
         }
 
         public Board() {
-            Width = 75;
+            Width = 70;
             Height = 21;
         }
 

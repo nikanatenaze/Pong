@@ -32,7 +32,7 @@ namespace Pong_Console.Game
             Board = new Board(Width, Height, (PlayerOneScore, PlayerTwoScore));
         }
 
-        public void Input()
+        private void Input()
         {
             if(Console.KeyAvailable)
             {
@@ -41,14 +41,14 @@ namespace Pong_Console.Game
             }
         }
 
-        public bool CheckGame()
+        private bool CheckGame()
         {
             if(PlayerOneScore == 3 || PlayerTwoScore == 3)
                 return true;
             return false;
         }
 
-        public void CreateNewRound(bool createAll = false)
+        private void CreateNewRound(bool createAll = false)
         {
             Ball = new Ball(Height, Width, (LeftPaddle, RightPaddle));
             Board = new Board(Width, Height, (PlayerOneScore, PlayerTwoScore));
