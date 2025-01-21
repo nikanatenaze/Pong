@@ -39,6 +39,8 @@ namespace Pong_Console.Menu
 
         public void DisableFullSize()
         {
+            Console.BufferWidth = Console.WindowWidth;
+            Console.BufferHeight = Console.WindowHeight;
             IntPtr consoleWindow = GetConsoleWindow();
             int style = GetWindowLong(consoleWindow, GWL_STYLE);
             SetWindowLong(consoleWindow, GWL_STYLE, style & ~WS_MAXIMIZEBOX);

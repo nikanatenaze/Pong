@@ -96,6 +96,7 @@ namespace Pong_Console.Menu
         public void Execute()
         {
             Console.CursorVisible = false;
+            
             FillValuesPos();
             while (true)
             {

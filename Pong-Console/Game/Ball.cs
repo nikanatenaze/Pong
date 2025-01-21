@@ -25,13 +25,13 @@
             int random = rnd.Next(1, 3);
             if (random == 1)
             {
-                var i = rnd.Next(2, 4);
+                var i = rnd.Next(2, 5);
                 Direction = (i, 0);
             }
             else if (random == 2)
             {
 
-                var i = rnd.Next(-3, -1);
+                var i = rnd.Next(-4, -2);
                 Direction = (i, 0);
             }
         }
@@ -43,16 +43,13 @@
             int NewYDirection;
             var LeftPaddleRage = (Paddles.LeftPaddle.Y - 1, Paddles.LeftPaddle.Y + Paddles.LeftPaddle.Length);
             var RightPaddleRage = (Paddles.RightPaddle.Y - 1, Paddles.RightPaddle.Y + Paddles.RightPaddle.Length);
+            // paddles bounce
             if (Paddles.LeftPaddle.X + 1 == X)
             {
                 if (Y! > LeftPaddleRage.Item1 && Y! < LeftPaddleRage.Item2)
                 {
-                    NewXDirection = rnd.Next(1, 4);
+                    NewXDirection = rnd.Next(2, 5);
                     NewYDirection = rnd.Next(-2, 3);
-                    while (NewXDirection == -3)
-                    {
-                        NewXDirection = rnd.Next(-4, -1);
-                    }
                     Direction = (NewXDirection, NewYDirection);
                 }
             }
@@ -60,24 +57,20 @@
             {
                 if (Y! > RightPaddleRage.Item1 && Y! < RightPaddleRage.Item2)
                 {
-                    NewXDirection = rnd.Next(-4, -1);
+                    NewXDirection = rnd.Next(-4, 1);
                     NewYDirection = rnd.Next(-2, 3);
-                    while (NewXDirection == -3)
-                    {
-                        NewXDirection = rnd.Next(-4, -1);
-                    }
                     Direction = (NewXDirection, NewYDirection);
                 }
             }
             // top and bottom bounce
             if (Y == 1)
             {
-                var i = rnd.Next(0, 4);
+                var i = rnd.Next(0, 3);
                 Direction = (Direction.X, i);
             }
             else if (Y == BoardHeight - 1)
             {
-                var i = rnd.Next(-4, 0);
+                var i = rnd.Next(-2, 0);
                 Direction = (Direction.X, i);
             }
         }
@@ -86,6 +79,9 @@
 
         private void Safety()
         {
+            var Left = (Paddles.LeftPaddle.Y - 1, Paddles.LeftPaddle.Y + Paddles.LeftPaddle.Length);
+            var Right = (Paddles.RightPaddle.Y - 1, Paddles.RightPaddle.Y + Paddles.RightPaddle.Length);
+            // border
             if (Math.Abs(Direction.X) > 1 || Math.Abs(Direction.Y) > 1) { 
                 if(Direction.X < -1 && X + Direction.X <= 0)
                 {
@@ -108,6 +104,34 @@
                     Direction = (Direction.X, i - 1);
                 }
             }
+            // paddle
+            if (Math.Abs(Direction.X) > 1 || Math.Abs(Direction.Y) > 1)
+            {
+                if (X < BoardWidth / 2)
+                {
+                    if (Y >= Left.Item1 && Y <= Left.Item2 && Direction.X < -1)
+                    {
+                        if (X - Paddles.LeftPaddle.X <= Math.Abs(Direction.X))
+                        {
+                            var i = X - Paddles.LeftPaddle.X;
+                            Direction = (-i + 1, Direction.Y);
+                        }
+                    }
+                }
+                if (X > BoardWidth / 2)
+                {
+                    if (Y >= Right.Item1 && Y <= Right.Item2 && Direction.X > 1)
+                    {
+                        if (Paddles.RightPaddle.X - X <= Direction.X)
+                        {
+                            var i = Paddles.RightPaddle.X - X;
+                            Direction = (i - 1, Direction.Y);
+
+                        }
+                    }
+                    
+                }
+            }
             X = X + Direction.X;
             Y = Y + Direction.Y;
         }
@@ -126,7 +150,6 @@
         }
         public int Move()
         {
-            
             Console.CursorVisible = false;
             Console.SetCursorPosition(X, Y);
             Console.WriteLine(" ");
