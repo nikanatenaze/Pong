@@ -13,6 +13,7 @@ namespace Pong_Console.Game
         public int Height { get; set; }
         public int PlayerOneScore { get; set; }
         public int PlayerTwoScore { get; set; }
+        public Bot Bot { get; set; }
         public Board Board { get; set; }
         public Paddle LeftPaddle { get; set; }
         public Paddle RightPaddle { get; set; }
@@ -28,6 +29,7 @@ namespace Pong_Console.Game
             PlayerTwoScore = 0;
             LeftPaddle = new Paddle(2, Height);
             RightPaddle = new Paddle(Width - 2, Height);
+            Bot = new Bot(LeftPaddle);
             Ball = new Ball(Height, Width, (LeftPaddle, RightPaddle));
             Board = new Board(Width, Height, (PlayerOneScore, PlayerTwoScore));
         }
@@ -61,6 +63,21 @@ namespace Pong_Console.Game
             }
         }
 
+        public void RunBot()
+        {
+            if(Ball.X < Width / 2)
+            {
+                if (Ball.Y > LeftPaddle.Y + LeftPaddle.Length / 2)
+                {
+                    LeftPaddle.Down();
+                }
+                if (Ball.Y < LeftPaddle.Y + LeftPaddle.Length / 2)
+                {
+                    LeftPaddle.Up();
+                }
+            }
+        }
+
         public void Run()
         {
             Console.CursorVisible = false;
@@ -74,21 +91,14 @@ namespace Pong_Console.Game
                 if (BallResult == 0)
                 {
                     Input();
-                    if (Key == ConsoleKey.W)
-                    {
-                        LeftPaddle.Up();
-                    }
-                    if (Key == ConsoleKey.UpArrow)
-                    {
-                        RightPaddle.Up();
-                    }
+                    RunBot();
                     if (Key == ConsoleKey.DownArrow)
                     {
                         RightPaddle.Down();
                     }
-                    if (Key == ConsoleKey.S)
+                    if (Key == ConsoleKey.UpArrow)
                     {
-                        LeftPaddle.Down();
+                        RightPaddle.Up();
                     }
                 }
                 else if (BallResult == 1)

@@ -2,25 +2,28 @@
 
 namespace Pong_Console.Menu
 {
-    internal class GameMenu
+    public class GameMenu
     {
         private List<string> Values { get; set; }
         private List<Action> Methods { get; set; }
-        private List<((int, int), string)> ValuesPos { get; set; }
+        private List<((int X, int Y), string Value)> ValuesPos { get; set; }
         private int Selected { get; set; }
         private int HeightLine { get; set; }
         private ConsoleKey Key { get; set; }
         private ConsoleKeyInfo KeyInfo { get; set; }
         private int ConsoleWidth { get; set; } = Console.WindowWidth;
         private int ConsoleHeight { get; set; } = Console.WindowHeight;
+        private bool LastParamStop { get; set; }
 
-        public GameMenu(IEnumerable<string> values, IEnumerable<Action> actions)
+        public GameMenu(IEnumerable<string> values, IEnumerable<Action> actions, bool LastParamStop = false)
         {
             Selected = 0;
             HeightLine = 5;
             this.Values = values.ToList();
-            this.ValuesPos = new List<((int, int), string)>();
+            this.ValuesPos = new List<((int X, int Y), string Values)>();
             this.Methods = actions.ToList();
+            this.LastParamStop = LastParamStop;
+            FillValuesPos();
         }
 
 
@@ -95,17 +98,24 @@ namespace Pong_Console.Menu
 
         public void Execute()
         {
+
+            Console.WriteLine(112);
             Console.CursorVisible = false;
-            
-            FillValuesPos();
             while (true)
             {
+                Console.WriteLine(Selected);
+                Console.WriteLine(ValuesPos.Count);
                 object result = Select();
                 if (result == " ")
                 {
                     Write();
                 }
-                if (result is int)
+                if(LastParamStop && result is int r && r == ValuesPos.Count - 1)
+                {
+                    Console.Clear();
+                    break;
+                }
+                else if (result is int)
                 {
                     Action meth = null;
                     foreach (var i in Methods)
