@@ -14,11 +14,25 @@ namespace Pong_Console.Menu
     }
 
     public class MenuFunctions() {
+
+        private static Pong Game = null;
         public static void StartModeMenu()
         {
             MenuModels.ChooseModeMenu.Execute();
         }
 
+
+        public static void VsBot() {
+            Game = new Pong();
+        }
+        public static void Single()
+        {
+            Game = new Pong();
+        }
+        public static void OneVsOne()
+        {
+            Game = new Pong();
+        }
     }
 
 }

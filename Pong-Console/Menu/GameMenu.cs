@@ -29,7 +29,6 @@ namespace Pong_Console.Menu
 
         private object Select()
         {
-
             Input();
             if (Key == ConsoleKey.Enter)
             {
@@ -98,15 +97,14 @@ namespace Pong_Console.Menu
 
         public void Execute()
         {
-
-            Console.WriteLine(112);
+            Selected = 0;
+            Selected--;
+            Key = ConsoleKey.S;
             Console.CursorVisible = false;
             while (true)
             {
-                Console.WriteLine(Selected);
-                Console.WriteLine(ValuesPos.Count);
                 object result = Select();
-                if (result == " ")
+                if (result == string.Empty)
                 {
                     Write();
                 }
@@ -130,7 +128,7 @@ namespace Pong_Console.Menu
                     if (meth != null)
                     {
                         Console.Clear();
-                        Key = ConsoleKey.ExSel;
+                        Key = ConsoleKey.A;
                         meth.Invoke();
                         Console.Clear();
                     }
