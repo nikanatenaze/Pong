@@ -9,20 +9,22 @@ namespace Pong_Console.Game
 {
     internal class Pong
     {
-        public int Width { get; set; }
-        public int Height { get; set; }
-        public int PlayerOneScore { get; set; }
-        public int PlayerTwoScore { get; set; }
-        public Bot Bot { get; set; }
-        public Board Board { get; set; }
-        public Paddle LeftPaddle { get; set; }
-        public Paddle RightPaddle { get; set; }
-        public Ball Ball { get; set; }
-        ConsoleKey Key { get; set; }
-        ConsoleKeyInfo ConsoleKeyInfo { get; set; }
+        private int Width { get; set; }
+        private int Height { get; set; }
+        private int PlayerOneScore { get; set; }
+        private int PlayerTwoScore { get; set; }
+        private Bot Bot { get; set; }
+        private Board Board { get; set; }
+        private Paddle LeftPaddle { get; set; }
+        private Paddle RightPaddle { get; set; }
+        private Ball Ball { get; set; }
+        private ConsoleKey Key { get; set; }
+        public GameTypes GameType { get; set; }
+        private ConsoleKeyInfo ConsoleKeyInfo { get; set; }
 
         public Pong()
         {
+            GameType = GameTypes.Bot;
             Height = 21;
             Width = 70;
             PlayerOneScore = 0;
@@ -78,6 +80,55 @@ namespace Pong_Console.Game
             }
         }
 
+        // Maybe not optimised... but comeon its console
+        public void GameController()
+        {
+            Input();
+            if (GameType == GameTypes.Bot)
+            {
+                RunBot();
+                if (Key == ConsoleKey.DownArrow || Key == ConsoleKey.S)
+                {
+                    RightPaddle.Down();
+                }
+                if (Key == ConsoleKey.UpArrow || Key == ConsoleKey.W)
+                {
+                    RightPaddle.Up();
+                }
+            }
+            else if(GameType == GameTypes.Single) {
+                if (Key == ConsoleKey.DownArrow || Key == ConsoleKey.S)
+                {
+                    LeftPaddle.Down();
+                    RightPaddle.Down();
+                }
+                if (Key == ConsoleKey.UpArrow || Key == ConsoleKey.W)
+                {
+                    LeftPaddle.Up();
+                    RightPaddle.Up();
+                }
+            }
+            else if (GameType == GameTypes.OneVsOne)
+            {
+                if (Key == ConsoleKey.W)
+                {
+                    LeftPaddle.Down();
+                }
+                if (Key == ConsoleKey.S)
+                {
+                    LeftPaddle.Up();
+                }
+                if (Key == ConsoleKey.DownArrow)
+                {
+                    RightPaddle.Down();
+                }
+                if (Key == ConsoleKey.UpArrow)
+                {
+                    RightPaddle.Up();
+                }
+            }
+        }
+
         public void Run()
         {
             Console.CursorVisible = false;
@@ -90,16 +141,7 @@ namespace Pong_Console.Game
                 int BallResult = Ball.Move();
                 if (BallResult == 0)
                 {
-                    Input();
-                    RunBot();
-                    if (Key == ConsoleKey.DownArrow)
-                    {
-                        RightPaddle.Down();
-                    }
-                    if (Key == ConsoleKey.UpArrow)
-                    {
-                        RightPaddle.Up();
-                    }
+                    GameController();
                 }
                 else if (BallResult == 1)
                 {

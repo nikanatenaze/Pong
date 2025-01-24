@@ -10,12 +10,12 @@ namespace Pong_Console.Menu
     public class MenuModels
     {
         public static GameMenu HomeMenu = new GameMenu(new List<string> { "Play game", "Exit"}, new List<Action> { MenuFunctions.StartModeMenu }, true);
-        public static GameMenu ChooseModeMenu = new GameMenu(new List<string> { "Vs bot", "Single", "1 vs 1", "Back" }, new List<Action> { }, true);
+        public static GameMenu ChooseModeMenu = new GameMenu(new List<string> { "Versus bot", "Single", "One vs One", "Back" }, new List<Action> { MenuFunctions.VsBot, MenuFunctions.Single, MenuFunctions.OneVsOne }, true);
     }
 
     public class MenuFunctions() {
 
-        private static Pong Game = null;
+        private static Pong Game = Game = new Pong();
         public static void StartModeMenu()
         {
             MenuModels.ChooseModeMenu.Execute();
@@ -23,15 +23,19 @@ namespace Pong_Console.Menu
 
 
         public static void VsBot() {
-            Game = new Pong();
+            
+            Game.GameType = GameTypes.Bot;
+            Game.Run();
         }
         public static void Single()
         {
-            Game = new Pong();
+            Game.GameType = GameTypes.Single;
+            Game.Run();
         }
         public static void OneVsOne()
         {
-            Game = new Pong();
+            Game.GameType = GameTypes.OneVsOne;
+            Game.Run();
         }
     }
 
