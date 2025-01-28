@@ -14,6 +14,7 @@ namespace Pong_Console.Game
         private int PlayerOneScore { get; set; }
         private int PlayerTwoScore { get; set; }
         private Bot Bot { get; set; }
+        public BotDifficulty BotDifficulty { get; set; }
         private Board Board { get; set; }
         private Paddle LeftPaddle { get; set; }
         private Paddle RightPaddle { get; set; }
@@ -25,6 +26,7 @@ namespace Pong_Console.Game
         public Pong()
         {
             GameType = GameTypes.Bot;
+            BotDifficulty = BotDifficulty.Normal;
             Height = 21;
             Width = 70;
             PlayerOneScore = 0;
@@ -67,8 +69,31 @@ namespace Pong_Console.Game
 
         public void RunBot()
         {
-            if(Ball.X < Width / 2)
-            {
+            if (BotDifficulty == BotDifficulty.Easy)
+                if (Ball.X < Width / 3)
+                {
+                    if (Ball.Y > LeftPaddle.Y + LeftPaddle.Length / 2)
+                    {
+                        LeftPaddle.Down();
+                    }
+                    if (Ball.Y < LeftPaddle.Y + LeftPaddle.Length / 2)
+                    {
+                        LeftPaddle.Up();
+                    }
+                }
+            if (BotDifficulty == BotDifficulty.Normal)
+                if (Ball.X < Width / 2)
+                {
+                    if (Ball.Y > LeftPaddle.Y + LeftPaddle.Length / 2)
+                    {
+                        LeftPaddle.Down();
+                    }
+                    if (Ball.Y < LeftPaddle.Y + LeftPaddle.Length / 2)
+                    {
+                        LeftPaddle.Up();
+                    }
+                }
+            if (BotDifficulty == BotDifficulty.Hard)
                 if (Ball.Y > LeftPaddle.Y + LeftPaddle.Length / 2)
                 {
                     LeftPaddle.Down();
@@ -77,7 +102,6 @@ namespace Pong_Console.Game
                 {
                     LeftPaddle.Up();
                 }
-            }
         }
 
         // Maybe not optimised... but comeon its console
